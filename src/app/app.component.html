@@ -44,7 +44,7 @@
     </div>
 
     <!-- Address form group -->
-    <div class="group">
+    <div class="group" formGroupName="address">
 
       <div class="form-group">
         <label class="mb-1 mt-3"><strong>State</strong></label>
@@ -65,7 +65,7 @@
 
     <!-- Buttons -->
     <button type="submit" class="btn btn-outline-primary m-2">Submit</button>
-    <button type="button" class="btn btn-outline-info m-2">Set Value</button>
+    <button type="button" class="btn btn-outline-info m-2" (click)="setValue()">Set Value</button>
     <button type="button" class="btn btn-outline-danger m-2">Patch Value</button>
 
     <hr><hr>

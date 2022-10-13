@@ -23,4 +23,19 @@ export class AppComponent {
     }),
   });
 
+  setValue(){
+    this.registrationForm.setValue({
+      userName: 'Vitalis',
+      email : 'vitalis@gmail.com',
+      subscribe : true,
+      password : 'qwerty',
+      confirmPassword :'qwerty',
+      address : {
+        state : 'Kenya',
+        city : 'Nairobi',
+        postalCode : '123',
+      }
+    });
+  };
+
 }
