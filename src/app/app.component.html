@@ -24,7 +24,12 @@
     <!-- Email -->
     <div class="form-group">
       <label class="mb-1 mt-3"><strong>Email</strong></label>
-      <input type="email" class="form-control" formControlName="email">
+      <input type="email" class="form-control" formControlName="email" [class.is-invalid]="email?.invalid && email?.dirty">
+
+      <!-- Email error messages -->
+      <div class="text-danger" *ngIf="email?.invalid && email?.dirty">
+        <small *ngIf="email?.errors?.['pattern']">Invalid email address</small>
+      </div>
 
       <!-- Alternative email button -->
       <button type="button" class="btn btn-outline-info btn-sm m-3">Add alternative email</button>
