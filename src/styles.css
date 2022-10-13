@@ -5,19 +5,5 @@
 }
 
 body{
-    background: beige;
-}
-
-.container{
-    padding: 20px;
-}
-
-.head hr{
-    border: 1px solid green;
-    width: 50%;
-    margin: auto;
-}
-
-.head{
-    color: green;
+    background: rgb(227, 227, 227);
 }
