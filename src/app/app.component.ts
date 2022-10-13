@@ -23,6 +23,7 @@ export class AppComponent {
     }),
   });
 
+  // Set value function
   setValue(){
     this.registrationForm.setValue({
       userName: 'Vitalis',
@@ -35,6 +36,17 @@ export class AppComponent {
         city : 'Nairobi',
         postalCode : '123',
       }
+    });
+  };
+
+  // Patch value function
+  patchValue(){
+    this.registrationForm.patchValue({
+      userName: 'Vitalis',
+      email : 'vitalis@gmail.com',
+      subscribe : true,
+      password : 'qwerty',
+      confirmPassword :'qwerty',
     });
   };
 
