@@ -2,7 +2,7 @@
 
   <!-- Registration form -->
 
-  <form>
+  <form [formGroup]="registrationForm">
 
     <div class="head text-center">
       <h1>Register</h1>
@@ -12,13 +12,13 @@
     <!-- Username -->
     <div class="form-group">
       <label class="mb-1"><strong>Username</strong></label>
-      <input type="text" class="form-control">
+      <input type="text" class="form-control" formControlName="userName">
     </div>
 
     <!-- Email -->
     <div class="form-group">
       <label class="mb-1 mt-3"><strong>Email</strong></label>
-      <input type="email" class="form-control">
+      <input type="email" class="form-control" formControlName="email">
 
       <!-- Alternative email button -->
       <button type="button" class="btn btn-outline-info btn-sm m-3">Add alternative email</button>
@@ -27,20 +27,20 @@
 
     <!-- Promotional offers checkbox -->
     <div class="form-check">
-      <input type="checkbox" class="form-check-input">
+      <input type="checkbox" class="form-check-input" formControlName="subscribe">
       <label class="form-check-label"><strong>Send me promotional offers</strong></label>
     </div>
 
     <!-- Password -->
     <div class="form-group">
       <label class="mb-1 mt-3"><strong>Password</strong></label>
-      <input type="password" class="form-control">
+      <input type="password" class="form-control" formControlName="password">
     </div>
 
     <!-- Confirm Password -->
     <div class="form-group">
       <label class="mb-1 mt-3"><strong>Confirm Password</strong></label>
-      <input type="password" class="form-control">
+      <input type="password" class="form-control" formControlName="confirmPassword">
     </div>
 
     <!-- Address form group -->
@@ -48,17 +48,17 @@
 
       <div class="form-group">
         <label class="mb-1 mt-3"><strong>State</strong></label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" formControlName="state">
       </div>
 
       <div class="form-group">
         <label class="mb-1 mt-3"><strong>City</strong></label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" formControlName="city">
       </div>
-
+      
       <div class="form-group">
         <label class="mb-1 mt-3"><strong>Postal Code</strong></label>
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" formControlName="postalCode">
       </div>
 
     </div>
