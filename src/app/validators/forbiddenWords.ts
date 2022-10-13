@@ -7,7 +7,7 @@ import { AbstractControl, ValidatorFn } from "@angular/forms";
 //     return forbiddenWord? {'forbiddenWords' : {value : control.value} } : null;
 // }
 
-// Modified to accept several parameters
+// Modified to accept several parameters FACTORY FUNCTION
 export function forbiddenWordsValidator(forbiddenTerm : RegExp) : ValidatorFn{
 
     return (control : AbstractControl) : {[key : string] : any} | null => {
