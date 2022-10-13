@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -9,19 +10,36 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class AppComponent {
   title = 'Registration';
 
-  // Form model
-  registrationForm = new FormGroup({ 
-    userName : new FormControl(''),
-    email : new FormControl(''),
-    subscribe : new FormControl(''),
-    password : new FormControl(''),
-    confirmPassword : new FormControl(''),
-    address : new FormGroup({ 
-      state : new FormControl(''),
-      city : new FormControl(''),
-      postalCode : new FormControl(''),
-    }),
+  constructor(private service : FormBuilder){};
+
+  // form model using form builder service
+  registrationForm = this.service.group({
+    userName : [''],
+    email : [''],
+    subscribe : [false],
+    password : [''],
+    confirmPassword : [''],
+    address : this.service.group({
+      state : [''],
+      city : [''],
+      postalCode : [''],
+    })
+
   });
+
+  // Form model using form group and form control
+  // registrationForm = new FormGroup({ 
+  //   userName : new FormControl(''),
+  //   email : new FormControl(''),
+  //   subscribe : new FormControl(''),
+  //   password : new FormControl(''),
+  //   confirmPassword : new FormControl(''),
+  //   address : new FormGroup({ 
+  //     state : new FormControl(''),
+  //     city : new FormControl(''),
+  //     postalCode : new FormControl(''),
+  //   }),
+  // });
 
   // Set value function
   setValue(){
