@@ -4,8 +4,9 @@
 
 .head hr{
     border: 1px solid green;
-    width:20%;
+    width:50%;
     margin: auto;
+    margin-bottom: 20px;
 }
 
 .head{
