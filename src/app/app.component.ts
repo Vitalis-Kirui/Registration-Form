@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -10,11 +10,16 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 export class AppComponent {
   title = 'Registration';
 
+  // Get username function
+  get userName(){
+    return this.registrationForm.get('userName');
+  };
+
   constructor(private service : FormBuilder){};
 
   // form model using form builder service
   registrationForm = this.service.group({
-    userName : [''],
+    userName : ['', [Validators.required, Validators.minLength(3)]],
     email : [''],
     subscribe : [false],
     password : [''],
@@ -28,6 +33,7 @@ export class AppComponent {
   });
 
   // Form model using form group and form control
+
   // registrationForm = new FormGroup({ 
   //   userName : new FormControl(''),
   //   email : new FormControl(''),

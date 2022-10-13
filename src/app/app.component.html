@@ -12,7 +12,7 @@
     <!-- Username -->
     <div class="form-group">
       <label class="mb-1"><strong>Username</strong></label>
-      <input type="text" class="form-control" formControlName="userName">
+      <input type="text" class="form-control" formControlName="userName" [class.is-invalid]=" userName?.invalid && userName?.dirty">
     </div>
 
     <!-- Email -->
