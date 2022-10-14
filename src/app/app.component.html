@@ -26,11 +26,12 @@
     <!-- Email -->
     <div class="form-group">
       <label class="mb-1 mt-3"><strong>Email</strong></label>
-      <input type="email" class="form-control" formControlName="email" [class.is-invalid]="email?.invalid && email?.dirty">
+      <input type="email" class="form-control" formControlName="email" [class.is-invalid]="email?.errors && email?.dirty">
 
       <!-- Email error messages -->
       <div class="text-danger" *ngIf="email?.invalid && email?.dirty">
         <small *ngIf="email?.errors?.['pattern']">Invalid email address</small>
+        <small *ngIf="email?.errors?.['required']">Email is required</small>
       </div>
 
       <!-- Alternative email button -->

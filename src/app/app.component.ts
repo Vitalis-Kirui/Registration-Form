@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { forbiddenWordsValidator, restrictedTermsValidator } from './validators/forbiddenWords';
 import { passwordMatchValidator } from './validators/password-match';
@@ -9,8 +9,10 @@ import { passwordMatchValidator } from './validators/password-match';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements  OnInit {
   title = 'Registration';
+
+  registrationForm! : FormGroup;
 
   // Get username function
   get userName(){
@@ -29,8 +31,10 @@ export class AppComponent {
 
   constructor(private service : FormBuilder){};
 
-  // form model using form builder service
-  registrationForm = this.service.group({
+  ngOnInit() {
+    
+    // form model using form builder service
+  this.registrationForm = this.service.group({
     userName : ['', [Validators.required, Validators.minLength(3), forbiddenWordsValidator(/admin/), forbiddenWordsValidator(/porn/), restrictedTermsValidator(/password/)]],
     email : ['', [Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     subscribe : [false],
@@ -45,6 +49,23 @@ export class AppComponent {
   }, 
   {validator : passwordMatchValidator}
   );
+
+  // Conditional validation for checkbox and email
+
+  this.registrationForm.get('subscribe')?.valueChanges
+          .subscribe(checkedValue =>{
+            const email = this.registrationForm.get('email');
+
+            if(checkedValue){
+              email?.setValidators([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
+            }
+            else{
+              email?.clearValidators();
+            }
+            email?.updateValueAndValidity();
+          })
+    
+  }
 
   // Form model using form group and form control
 
