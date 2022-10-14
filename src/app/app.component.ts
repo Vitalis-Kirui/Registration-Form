@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
 import { forbiddenWordsValidator, restrictedTermsValidator } from './validators/forbiddenWords';
 import { passwordMatchValidator } from './validators/password-match';
 
@@ -29,6 +29,16 @@ export class AppComponent implements  OnInit {
     return this.registrationForm.get('password');
   };
 
+  // Get alternativeEmail function
+  get alternativeEmail(){
+    return this.registrationForm.get('alternativeEmails') as FormArray;
+  }
+
+  // pushing alternative emails to form
+  addAlternativeEmail(){
+    this.alternativeEmail.push(this.service.control(''));
+  }
+
   constructor(private service : FormBuilder){};
 
   ngOnInit() {
@@ -44,28 +54,28 @@ export class AppComponent implements  OnInit {
       state : [''],
       city : [''],
       postalCode : [''],
-    })
-
+    }),
+    alternativeEmails : this.service.array([])
   }, 
   {validator : passwordMatchValidator}
   );
 
-  // Conditional validation for checkbox and email
+    // Conditional validation for checkbox and email
 
-  this.registrationForm.get('subscribe')?.valueChanges
-          .subscribe(checkedValue =>{
-            const email = this.registrationForm.get('email');
+    this.registrationForm.get('subscribe')?.valueChanges
+    .subscribe(checkedValue =>{
+      const email = this.registrationForm.get('email');
 
-            if(checkedValue){
-              email?.setValidators([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
-            }
-            else{
-              email?.clearValidators();
-            }
-            email?.updateValueAndValidity();
-          })
-    
-  }
+      if(checkedValue){
+        email?.setValidators([Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]);
+      }
+      else{
+        email?.clearValidators();
+      }
+      email?.updateValueAndValidity();
+    })
+
+}
 
   // Form model using form group and form control
 
