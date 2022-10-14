@@ -53,7 +53,13 @@
     <!-- Confirm Password -->
     <div class="form-group">
       <label class="mb-1 mt-3"><strong>Confirm Password</strong></label>
-      <input type="password" class="form-control" formControlName="confirmPassword">
+      <input type="password" class="form-control" formControlName="confirmPassword" [class.is-invalid]="registrationForm.errors?.['misMatch']">
+
+      <!-- Mis Match error message -->
+      <div class="text-danger" *ngIf="registrationForm.errors?.['misMatch']">
+        <small *ngIf="registrationForm.errors?.['misMatch']">Password do not match</small>
+      </div>
+
     </div>
 
     <!-- Address form group -->

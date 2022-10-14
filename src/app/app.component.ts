@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { forbiddenWordsValidator, restrictedTermsValidator } from './validators/forbiddenWords';
+import { passwordMatchValidator } from './validators/password-match';
 
 
 @Component({
@@ -36,7 +37,9 @@ export class AppComponent {
       postalCode : [''],
     })
 
-  });
+  }, 
+  {validator : passwordMatchValidator}
+  );
 
   // Form model using form group and form control
 
