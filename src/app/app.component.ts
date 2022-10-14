@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
+import { RegistrationService } from './Services/registration.service';
 import { forbiddenWordsValidator, restrictedTermsValidator } from './validators/forbiddenWords';
 import { passwordMatchValidator } from './validators/password-match';
 
@@ -39,7 +40,7 @@ export class AppComponent implements  OnInit {
     this.alternativeEmails.push(this.service.control(''));
   };
 
-  constructor(private service : FormBuilder){};
+  constructor(private service : FormBuilder, private register : RegistrationService){};
 
   ngOnInit() {
     
@@ -122,7 +123,17 @@ export class AppComponent implements  OnInit {
 
   // Submit function
   onSubmit(){
-    console.log(this.registrationForm.value)
+    console.log(this.registrationForm.value);
+
+    this.register.register(this.registrationForm.value)
+            .subscribe(
+              response => {
+                console.log("Success!",response);
+              },
+              error =>{
+                console.log("Error!",error);
+              }
+            )
   }
 
 }
