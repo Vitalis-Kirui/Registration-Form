@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { forbiddenWordsValidator } from './validators/forbiddenWords';
+import { forbiddenWordsValidator, restrictedTermsValidator } from './validators/forbiddenWords';
 
 
 @Component({
@@ -25,7 +25,7 @@ export class AppComponent {
 
   // form model using form builder service
   registrationForm = this.service.group({
-    userName : ['', [Validators.required, Validators.minLength(3), forbiddenWordsValidator(/admin/), forbiddenWordsValidator(/porn/)]],
+    userName : ['', [Validators.required, Validators.minLength(3), forbiddenWordsValidator(/admin/), forbiddenWordsValidator(/porn/), restrictedTermsValidator(/password/)]],
     email : ['', [Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     subscribe : [false],
     password : [''],

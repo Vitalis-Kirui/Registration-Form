@@ -16,3 +16,18 @@ export function forbiddenWordsValidator(forbiddenTerm : RegExp) : ValidatorFn{
     };
 
 }
+
+
+// export function forbiddenTermsValidator(control : AbstractControl) : {[key : string] : any} | null {
+//     const forbiddenTerms = /sambu/.test(control.value);
+//     return forbiddenTerms ? {'restrictedTerms' : {value : control.value}} : null;
+// }
+
+export function restrictedTermsValidator(restrictedTerm : RegExp) : ValidatorFn{
+
+    return (control : AbstractControl) : {[key : string] : any} | null => {
+        const forbiddenTerms = restrictedTerm.test(control.value);
+        return forbiddenTerms ? {'restrictedTerms' : {value : control.value}} : null;
+    }
+
+}

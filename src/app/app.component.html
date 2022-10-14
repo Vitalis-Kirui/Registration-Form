@@ -19,6 +19,7 @@
         <small *ngIf="userName?.errors?.['required']">Username is required.</small>
         <small *ngIf="userName?.errors?.['minlength']">Username must be at least 3 characters</small>
         <small *ngIf="userName?.errors?.['forbiddenWords']">{{userName?.errors?.['forbiddenWords'].value}} username not allowed</small>
+        <small *ngIf="userName?.errors?.['restrictedTerms']">You are not allowed to use {{userName?.errors?.['restrictedTerms'].value}} in your username.</small>
       </div>
     </div>
 
