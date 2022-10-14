@@ -34,8 +34,13 @@
         <small *ngIf="email?.errors?.['required']">Email is required</small>
       </div>
 
+      <!-- Alternative emails loop -->
+      <div class="emails" formArrayName="alternativeEmails" *ngFor="let email of alternativeEmail.controls , let i = index">
+        <input type="email" [formControlName]="i" class="form-control">
+      </div>
+
       <!-- Alternative email button -->
-      <button type="button" class="btn btn-outline-info btn-sm m-3">Add alternative email</button>
+      <button type="button" class="btn btn-outline-info btn-sm m-3" (click)="addAlternativeEmail()">Add alternative email</button>
 
     </div>
 
