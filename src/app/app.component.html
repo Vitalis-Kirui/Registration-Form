@@ -2,7 +2,7 @@
 
   <!-- Registration form -->
 
-  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" *ngIf="!submitted">
 
     <div class="head text-center">
       <h1>Register</h1>
@@ -117,5 +117,24 @@
   </form>
 
   <!-- End of the form -->
+
+  <!-- After submitting the form -->
+  <div class="afterSub" *ngIf="submitted">
+
+    <div class="row">
+
+      <div class="col-md-4"></div>
+      <div class="col-md-4 content">
+
+        <h2 class="text-center">Success</h2>
+        <hr>
+        <p>The for was submitted successfully</p>
+
+      </div>
+      <div class="col-md-4"></div>
+
+    </div>
+
+  </div>
 
 </div>

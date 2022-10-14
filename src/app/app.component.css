@@ -26,3 +26,20 @@ form{
 label{
     color: green;
 }
+
+.afterSub{
+    color: green;
+    padding: 20px;
+}
+
+.afterSub hr{
+    border: 1px solid green;
+    width: 75%;
+    margin: auto;
+    margin-bottom: 5px;
+}
+
+.content{
+    border: 2px solid green;
+    padding: 10px;
+}

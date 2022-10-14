@@ -15,6 +15,8 @@ export class AppComponent implements  OnInit {
 
   registrationForm! : FormGroup;
 
+  submitted = false;
+
   // Get username function
   get userName(){
     return this.registrationForm.get('userName');
@@ -124,6 +126,8 @@ export class AppComponent implements  OnInit {
   // Submit function
   onSubmit(){
     console.log(this.registrationForm.value);
+
+    this.submitted = true;
 
     this.register.register(this.registrationForm.value)
             .subscribe(
