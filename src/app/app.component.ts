@@ -104,7 +104,8 @@ export class AppComponent implements  OnInit {
         state : 'Kenya',
         city : 'Nairobi',
         postalCode : '123',
-      }
+      },
+      alternativeEmail : ''
     });
   };
 
@@ -118,5 +119,10 @@ export class AppComponent implements  OnInit {
       confirmPassword :'qwerty',
     });
   };
+
+  // Submit function
+  onSubmit(){
+    console.log(this.registrationForm.value)
+  }
 
 }
