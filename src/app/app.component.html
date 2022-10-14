@@ -35,12 +35,12 @@
       </div>
 
       <!-- Alternative emails loop -->
-      <div class="emails" formArrayName="alternativeEmails" *ngFor="let email of alternativeEmail.controls , let i = index">
-        <input type="email" [formControlName]="i" class="form-control">
+      <div class="emails" formArrayName="alternativeEmail" *ngFor="let email of alternativeEmails.controls, let i = index">
+        <input type="email" class="form-control my-2" [formControlName]="i">
       </div>
 
       <!-- Alternative email button -->
-      <button type="button" class="btn btn-outline-info btn-sm m-3" (click)="addAlternativeEmail()">Add alternative email</button>
+      <button type="button" class="btn btn-outline-info btn-sm m-3"(click)="addAlternativeEmail()">Add alternative email</button>
 
     </div>
 

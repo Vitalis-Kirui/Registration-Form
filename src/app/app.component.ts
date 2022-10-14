@@ -30,14 +30,14 @@ export class AppComponent implements  OnInit {
   };
 
   // Get alternativeEmail function
-  get alternativeEmail(){
-    return this.registrationForm.get('alternativeEmails') as FormArray;
-  }
+  get alternativeEmails(){
+    return this.registrationForm.get('alternativeEmail') as FormArray;
+  };
 
-  // pushing alternative emails to form
+  // Pushing alternative emails function
   addAlternativeEmail(){
-    this.alternativeEmail.push(this.service.control(''));
-  }
+    this.alternativeEmails.push(this.service.control(''));
+  };
 
   constructor(private service : FormBuilder){};
 
@@ -55,7 +55,7 @@ export class AppComponent implements  OnInit {
       city : [''],
       postalCode : [''],
     }),
-    alternativeEmails : this.service.array([])
+    alternativeEmail : this.service.array([])
   }, 
   {validator : passwordMatchValidator}
   );
