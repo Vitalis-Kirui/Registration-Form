@@ -22,6 +22,11 @@ export class AppComponent {
     return this.registrationForm.get('email');
   };
 
+  // Get password function
+  get password(){
+    return this.registrationForm.get('password');
+  };
+
   constructor(private service : FormBuilder){};
 
   // form model using form builder service
@@ -29,7 +34,7 @@ export class AppComponent {
     userName : ['', [Validators.required, Validators.minLength(3), forbiddenWordsValidator(/admin/), forbiddenWordsValidator(/porn/), restrictedTermsValidator(/password/)]],
     email : ['', [Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     subscribe : [false],
-    password : [''],
+    password : ['', [Validators.minLength(5)],],
     confirmPassword : [''],
     address : this.service.group({
       state : [''],

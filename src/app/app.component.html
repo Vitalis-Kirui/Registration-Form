@@ -47,7 +47,13 @@
     <!-- Password -->
     <div class="form-group">
       <label class="mb-1 mt-3"><strong>Password</strong></label>
-      <input type="password" class="form-control" formControlName="password">
+      <input type="password" class="form-control" formControlName="password" [class.is-invalid]="password?.invalid && password?.dirty">
+
+      <!-- Error message -->
+      <div class="text-danger" *ngIf="password?.errors">
+        <small *ngIf="password?.errors?.['minlength']">Password must have at least 5 characters</small>
+      </div>
+
     </div>
 
     <!-- Confirm Password -->
