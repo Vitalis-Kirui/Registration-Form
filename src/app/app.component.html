@@ -98,7 +98,7 @@
     </div>
 
     <!-- Buttons -->
-    <button type="submit" class="btn btn-outline-primary m-2">Submit</button>
+    <button type="submit" class="btn btn-outline-primary m-2" [disabled]="!registrationForm.valid">Submit</button>
     <button type="button" class="btn btn-outline-info m-2" (click)="setValue()">Set Value</button>
     <button type="button" class="btn btn-outline-danger m-2" (click)="patchValue()">Patch Value</button>
 
